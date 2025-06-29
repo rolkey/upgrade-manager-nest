@@ -38,7 +38,7 @@ export class UpgradesService {
     writeFileSync(filePath, file.buffer);
 
     // 更新 upgrades.json
-    this.updateUpgradesJson(uploadFileDto.version, file.filename);
+    this.updateUpgradesJson(uploadFileDto.version, file.originalname);
 
     return { message: 'File uploaded successfully', filePath };
   }
@@ -91,7 +91,7 @@ export class UpgradesService {
     }
 
     // 添加新的版本信息
-    upgrades.push({ version, path: `/uploads/${filename}` });
+    upgrades.push({ version, filename });
     this.upgrades = upgrades;
 
     // 写入更新后的内容到 upgrades.json
