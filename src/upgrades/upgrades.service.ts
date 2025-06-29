@@ -32,8 +32,7 @@ export class UpgradesService {
   }
 
   async uploadFile(file: Express.Multer.File, uploadFileDto: UploadFileDto) {
-    console.log('uploadFile called', file.filename, uploadFileDto.version, this.uploadFilePath);
-    const filePath = join(this.uploadFilePath, file.filename);
+    const filePath = join(this.uploadFilePath, file.originalname);
 
     // 保存文件
     writeFileSync(filePath, file.buffer);
